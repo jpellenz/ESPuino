@@ -22,7 +22,7 @@
     #endif
 
     // MOSI 22, MISO 13, SCK 12 RFID_CS 05
-    #define RST_PIN                         99          // The connection is necessary but has to be set anyway; so let's use a dummy-number
+    #define RST_PIN                         99          // The connection is not necessary but has to be set anyway; so let's use a dummy-number
     #define RFID_CS                         05          // GPIO for chip select (RFID)
     #define RFID_MOSI                       22          // GPIO for master out slave in (RFID)
     #define RFID_MISO                       13          // GPIO for master in slave out (RFID)
@@ -65,7 +65,7 @@
     #define WAKEUP_BUTTON                   DREHENCODER_BUTTON // Defines the button that is used to wake up ESPuino from deepsleep.
 
     // Power-control
-    #define POWER                           19          // GPIO used to drive transistor-circuit, that switches off peripheral devices while ESP32-deepsleep
+    #define POWER                           99          // GPIO used to drive transistor-circuit, that switches off peripheral devices while ESP32-deepsleep
 
     // (optional) Neopixel
     #define LED_PIN                         23          // GPIO for Neopixel-signaling
