@@ -94,7 +94,7 @@
 
     #define BUTTON_0_LONG     CMD_LASTTRACK
     #define BUTTON_1_LONG     CMD_FIRSTTRACK
-    #define BUTTON_2_LONG     CMD_PLAYPAUSE
+    #define BUTTON_2_LONG     CMD_NEXTTRACK
     #define BUTTON_3_LONG     CMD_SLEEPMODE
     #define BUTTON_4_LONG     CMD_NOTHING
     #define BUTTON_5_LONG     CMD_NOTHING

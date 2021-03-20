@@ -56,7 +56,7 @@
     // Control-buttons (set to 99 to disable)
     #define NEXT_BUTTON                     99          // Button 0: GPIO to detect next
     #define PREVIOUS_BUTTON                 99          // Button 1: GPIO to detect previous (Important: as of 19.11.2020 changed from 33 to 2; make sure to change in SD-MMC-mode)
-    #define PAUSEPLAY_BUTTON                99          // Button 2: GPIO to detect pause/play
+    #define PAUSEPLAY_BUTTON                21          // Button 2: GPIO to detect pause/play
     #define BUTTON_4                        99          // Button 4: unnamed optional button
     #define BUTTON_5                        99          // Button 5: unnamed optional button
 
