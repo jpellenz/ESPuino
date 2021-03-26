@@ -1430,6 +1430,10 @@ void playAudio(void *parameter) {
     audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
     audio.setVolume(initVolume);
 
+    #ifdef PLAY_MONO
+        audio.forceMono (true);
+        audio.setTone(3,0,0);
+    #endif
 
     uint8_t currentVolume;
     static BaseType_t trackQStatus;

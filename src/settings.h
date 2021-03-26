@@ -26,12 +26,12 @@
     #define MQTT_ENABLE                     // Make sure to configure mqtt-server and (optionally) username+pwd
     #define FTP_ENABLE                      // Enables FTP-server; DON'T FORGET TO ACTIVATE AFTER BOOT BY PRESSING PAUSE + NEXT-BUTTONS (IN PARALLEL)!
     #define NEOPIXEL_ENABLE                 // Don't forget configuration of NUM_LEDS if enabled
-    //#define NEOPIXEL_REVERSE_ROTATION     // Some Neopixels are adressed/soldered counter-clockwise. This can be configured here.
+    #define NEOPIXEL_REVERSE_ROTATION     // Some Neopixels are adressed/soldered counter-clockwise. This can be configured here.
     #define LANGUAGE 1                      // 1 = deutsch; 2 = english
     //#define STATIC_IP_ENABLE              // Enables static IP-configuration (change static ip-section accordingly)
     //#define HEADPHONE_ADJUST_ENABLE       // Used to adjust (lower) volume for optional headphone-pcb (refer maxVolumeSpeaker / maxVolumeHeadphone)
     #define SHUTDOWN_IF_SD_BOOT_FAILS       // Will put ESP to deepsleep if boot fails due to SD. Really recommend this if there's in battery-mode no other way to restart ESP! Interval adjustable via deepsleepTimeAfterBootFails.
-    //#define MEASURE_BATTERY_VOLTAGE         // Enables battery-measurement via GPIO (ADC) and voltage-divider
+    #define MEASURE_BATTERY_VOLTAGE         // Enables battery-measurement via GPIO (ADC) and voltage-divider
     #define PLAY_LAST_RFID_AFTER_REBOOT   // When restarting ESPuino, the last RFID that was active before, is recalled and played
     #define USE_LAST_VOLUME_AFTER_REBOOT  // Remembers the volume used at last shutdown after reboot
     #define USEROTARY_ENABLE                // If rotary-encoder is used (don't forget to review WAKEUP_BUTTON if you disable this feature!)
@@ -95,13 +95,13 @@
     #define BUTTON_0_SHORT    CMD_NEXTTRACK
     #define BUTTON_1_SHORT    CMD_PREVTRACK
     #define BUTTON_2_SHORT    CMD_PLAYPAUSE
-    #define BUTTON_3_SHORT    CMD_MEASUREBATTERY
+    #define BUTTON_3_SHORT    CMD_PLAYPAUSE // CMD_MEASUREBATTERY
     #define BUTTON_4_SHORT    CMD_NOTHING
     #define BUTTON_5_SHORT    CMD_NOTHING
 
     #define BUTTON_0_LONG     CMD_LASTTRACK
     #define BUTTON_1_LONG     CMD_FIRSTTRACK
-    #define BUTTON_2_LONG     CMD_NEXTTRACK
+    #define BUTTON_2_LONG     CMD_PLAYPAUSE
     #define BUTTON_3_LONG     CMD_SLEEPMODE
     #define BUTTON_4_LONG     CMD_NOTHING
     #define BUTTON_5_LONG     CMD_NOTHING
@@ -163,6 +163,8 @@
     // Where to store the backup-file for NVS-records
     static const char backupFile[] PROGMEM = "/backup.txt"; // File is written every time a (new) RFID-assignment via GUI is done
 
+    // 
+    #define PLAY_MONO
 
     //#################### Settings for optional Modules##############################
     // (optinal) Neopixel
