@@ -23,8 +23,8 @@
 
     // MOSI 22, MISO 13, SCK 12 RFID_CS 05
     #define RST_PIN                         99          // The connection is not necessary but has to be set anyway; so let's use a dummy-number
-    #define RFID_CS                         05          // GPIO for chip select (RFID)
-    #define RFID_MOSI                       22          // GPIO for master out slave in (RFID)
+    #define RFID_CS                         05 // 05          // grau GPIO for chip select (RFID)
+    #define RFID_MOSI                       18 // 22          // blau GPIO for master out slave in (RFID)
     #define RFID_MISO                       13          // GPIO for master in slave out (RFID)
     #define RFID_SCK                        12          // GPIO for clock-signal (RFID)
 
@@ -48,13 +48,13 @@
 
     // Rotary encoder; CLK 18, DT 19, SW 0 (was pin 23, but pin 23 cannot be used to wake up from deep sleep)
     #ifdef USEROTARY_ENABLE
-        #define DREHENCODER_CLK             18          // If you want to reverse encoder's direction, just switch GPIOs of CLK with DT (in software or hardware)
+        #define DREHENCODER_CLK             19          // If you want to reverse encoder's direction, just switch GPIOs of CLK with DT (in software or hardware)
         #define DREHENCODER_DT              04          // Info: Lolin D32 / Lolin D32 pro 35 are using 35 for battery-voltage-monitoring!
         #define DREHENCODER_BUTTON          36          // (set to 99 to disable; 0->39 for GPIO; 100->115 for port-expander)
     #endif
 
     // Control-buttons (set to 99 to DISABLE; 0->39 for GPIO; 100->115 for port-expander)
-    #define NEXT_BUTTON                     19          // Button 0: GPIO to detect next
+    #define NEXT_BUTTON                     22          // Button 0: GPIO to detect next
     #define PREVIOUS_BUTTON                 21          // Button 1: GPIO to detect previous (Important: as of 19.11.2020 changed from 33 to 2; make sure to change in SD-MMC-mode)
     #define PAUSEPLAY_BUTTON                99          // Button 2: GPIO to detect pause/play
     #define BUTTON_4                        99          // Button 4: unnamed optional button
