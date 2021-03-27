@@ -23,8 +23,8 @@
 
     // MOSI 22, MISO 13, SCK 12 RFID_CS 05
     #define RST_PIN                         99          // The connection is not necessary but has to be set anyway; so let's use a dummy-number
-    #define RFID_CS                         05 // 05          // grau GPIO for chip select (RFID)
-    #define RFID_MOSI                       18 // 22          // blau GPIO for master out slave in (RFID)
+    #define RFID_CS                         05          // GPIO for chip select (RFID)
+    #define RFID_MOSI                       18          // GPIO for master out slave in (RFID)
     #define RFID_MISO                       13          // GPIO for master in slave out (RFID)
     #define RFID_SCK                        12          // GPIO for clock-signal (RFID)
 
