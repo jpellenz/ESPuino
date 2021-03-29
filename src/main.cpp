@@ -1092,7 +1092,15 @@ void callback(const char *topic, const byte *payload, uint32_t length) {
 
     // Check if LEDs should be dimmed
     else if (strcmp_P(topic, topicLedBrightnessCmnd) == 0) {
-        ledBrightness = strtoul(receivedString, NULL, 10);
+        int v = strtoul(receivedString, NULL, 10);
+        if (v > 0) {
+            ledBrightness = v;
+        }
+        else
+        {
+            snprintf(logBuf, serialLoglength, "Ignoring new LED brightness: %s: %s", topic, receivedString);
+            loggerNl(serialDebug, logBuf, LOGLEVEL_ERROR);
+        }
     }
 
     // Requested something that isn't specified?
@@ -2067,7 +2075,7 @@ void showLed(void *parameter) {
         }
         if (gotoSleep) { // If deepsleep is planned, turn off LEDs first in order to avoid LEDs still glowing when ESP32 is in deepsleep
             if (!turnedOffLeds) {
-                FastLED.clear();
+                FastLED.clear(true);
                 turnedOffLeds = true;
             }
 

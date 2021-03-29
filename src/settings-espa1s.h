@@ -21,13 +21,15 @@
         #define SPISD_SCK                   14          // GPIO for clock-signal (SD) => not necessary for single-SPI
     #endif
 
-    // MOSI 22, MISO 13, SCK 12 RFID_CS 05
+    // RFID reder (via SPI)
+    // MOSI 18, MISO 13, SCK 12 RFID_CS 05
     #define RST_PIN                         99          // The connection is not necessary but has to be set anyway; so let's use a dummy-number
     #define RFID_CS                         05          // GPIO for chip select (RFID)
     #define RFID_MOSI                       18          // GPIO for master out slave in (RFID)
     #define RFID_MISO                       13          // GPIO for master in slave out (RFID)
     #define RFID_SCK                        12          // GPIO for clock-signal (RFID)
 
+    // RFID reder (via I2C)
     #define MFRC522_RST_PIN                 99          // needed for i2c-comm  MTDI on JTAG
     #define MFRC522_ADDR                    0x28        // default Address of MFRC522
     #define ext_IIC_CLK                     99          // 14-pin-header
