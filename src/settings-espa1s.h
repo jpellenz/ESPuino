@@ -55,7 +55,7 @@
     #define GPIO_PA_EN                  GPIO_NUM_21          // internal
     #define GPIO_SEL_PA_EN              GPIO_SEL_21
 
-    // Rotary encoder; CLK 18, DT 19, SW 0 (was pin 23, but pin 23 cannot be used to wake up from deep sleep)
+    // Rotary encoder
     #ifdef USEROTARY_ENABLE
         #define DREHENCODER_CLK             19          // If you want to reverse encoder's direction, just switch GPIOs of CLK with DT (in software or hardware)
         #define DREHENCODER_DT              04          // Info: Lolin D32 / Lolin D32 pro 35 are using 35 for battery-voltage-monitoring!
