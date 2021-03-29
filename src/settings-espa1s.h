@@ -4,16 +4,17 @@
 
     //######################### INFOS ####################################
     /* This is a develboard-specific config-file for *AI Tinker ESP32-A1S-AudioKit*. It's highly customized and almost certainly
-    not suitable for a different develboards.
-    Has a lot of stuff already onboard but needs some soldering rework as there are not all GPIOs exposed
+    not suitable for a different develboard.
+    Has a lot of stuff already onboard but needs some soldering rework as there are not all GPIOs exposed.
     PCB: Not necessary.
     Infos: https://github.com/Ai-Thinker-Open/ESP32-A1S-AudioKit
-    Status: untested
+           https://forum.espuino.de/t/esp32-audio-kit-esp32-a1s/106
+    Status: tested by kkloesner with RC522-I2C
     */
 
 
     //################## GPIO-configuration ##############################
-    // uSD-card-reader (via SPI)
+    // uSD-card-reader (via SPI - better use SD_MMC instead!)
     #define SPISD_CS                        13          // GPIO for chip select (SD)
     #ifndef SINGLE_SPI_ENABLE
         #define SPISD_MOSI                  15          // GPIO for master out slave in (SD) => not necessary for single-SPI
@@ -29,11 +30,16 @@
     #define RFID_MISO                       13          // GPIO for master in slave out (RFID)
     #define RFID_SCK                        12          // GPIO for clock-signal (RFID)
 
-    // RFID reder (via I2C)
-    #define MFRC522_RST_PIN                 99          // needed for i2c-comm  MTDI on JTAG
-    #define MFRC522_ADDR                    0x28        // default Address of MFRC522
-    #define ext_IIC_CLK                     99          // 14-pin-header
-    #define ext_IIC_DATA                    99          // 14-pin-header
+    // RFID (via I2C)
+    #if defined(RFID_READER_TYPE_MFRC522_I2C)
+        #define MFRC522_RST_PIN                 12          // needed for initialisation -> MTDI on JTAG header
+    #endif
+
+    // I2C-configuration (necessary for RC522 [only via i2c - not spi!] or port-expander)
+    #if defined(RFID_READER_TYPE_MFRC522_I2C) || defined(PORT_EXPANDER_ENABLE)
+        #define ext_IIC_CLK                 23          // i2c-SCL (clock) [14 pin-header]
+        #define ext_IIC_DATA                18          // i2c-SDA (data) [14 pin-header]
+    #endif
 
     // I2S (DAC)
     #define I2S_DOUT                        25          // Digital out (I2S)
@@ -62,22 +68,18 @@
     #define BUTTON_4                        99          // Button 4: unnamed optional button
     #define BUTTON_5                        99          // Button 5: unnamed optional button
 
-    // I2C-configuration (necessary for RC522 [only via i2c - not spi!] or port-expander)
-    #if defined(RFID_READER_TYPE_MFRC522_I2C) || defined(PORT_EXPANDER_ENABLE)
-        #define ext_IIC_CLK                 5           // i2c-SCL (clock)
-        #define ext_IIC_DATA                2           // i2c-SDA (data)
-    #endif
-
     // Wake-up button => this also is the interrupt-pin if port-expander is enabled!
     // Please note: only RTC-GPIOs (0, 4, 12, 13, 14, 15, 25, 26, 27, 32, 33, 34, 35, 36, 39, 99) can be used! Set to 99 to DISABLE.
     // Please note #2: this button can be used as interrupt-pin for port-expander. If so, all pins connected to port-expander can wake up ESPuino.
-    #define WAKEUP_BUTTON                   DREHENCODER_BUTTON // Defines the button that is used to wake up ESPuino from deepsleep.
+    #define WAKEUP_BUTTON                   PAUSEPLAY_BUTTON // Defines the button that is used to wake up ESPuino from deepsleep.
 
     // Power-control
     #define POWER                           99          // GPIO used to drive transistor-circuit, that switches off peripheral devices while ESP32-deepsleep
 
     // (optional) Neopixel
-    #define LED_PIN                         23          // GPIO for Neopixel-signaling
+    #if defined(NEOPIXEL_ENABLE)
+        #define LED_PIN                     23          // GPIO for Neopixel-signaling
+    #endif
 
     // (optinal) Headphone-detection
     #ifdef HEADPHONE_ADJUST_ENABLE
